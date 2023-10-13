@@ -7,3 +7,4 @@
 /.stryker-tmp
 /node_modules
 stryker.config.json
+.idea/workspace.xml
