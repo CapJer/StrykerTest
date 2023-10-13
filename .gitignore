@@ -4,3 +4,5 @@
 
 /.vs
 /Angular/.vscode
+/.stryker-tmp
+/node_modules

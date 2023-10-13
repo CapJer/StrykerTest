@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@stryker-mutator/core": "^7.2.0"
+  }
+}
