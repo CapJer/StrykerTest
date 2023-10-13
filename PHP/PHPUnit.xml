@@ -2,7 +2,7 @@
 <phpunit executionOrder="random" resolveDependencies="true" bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="tests">
-            <directory>./tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
