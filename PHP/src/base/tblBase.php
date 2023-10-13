@@ -11,6 +11,7 @@ class tblBase
     public function __construct($className){
         $this->className = $className;
         $dbProv = new provDatabase();
+
         $this->db = $dbProv->getConnection();
     }
 

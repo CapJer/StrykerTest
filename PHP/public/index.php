@@ -1,13 +1,8 @@
 <?php
 require("../bootstrap.php");
 
-http_response_code(401);
-exit();
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
-
-http_response_code(401);
-exit();
 
 $webController = new provWebController();
 
