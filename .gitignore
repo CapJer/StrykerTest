@@ -6,3 +6,4 @@
 /Angular/.vscode
 /.stryker-tmp
 /node_modules
+stryker.config.json
