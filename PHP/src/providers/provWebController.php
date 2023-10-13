@@ -1,18 +1,13 @@
-<?php
-namespace Src\providers;
-
-use Src\controllers\ctlTasks;
-use Src\controllers\ctlFinances;
-use Src\controllers\ctlProjects;
+<?php declare(strict_types=1);
 
 class provWebController {
     private array $registeredControllers;
-    private $currentController;
+    private ctlBase $currentController;
 
-    public function __construct($db){
-        $this->registeredControllers['Tasks'] = new ctlTasks($db);
-        $this->registeredControllers['Projects'] = new ctlProjects($db);
-        $this->registeredControllers['Finances'] = new ctlFinances($db);
+    public function __construct(){
+        $this->registeredControllers['Tasks'] = new ctlTasks();
+        $this->registeredControllers['Projects'] = new ctlProjects();
+        $this->registeredControllers['Finances'] = new ctlFinances();
     }
 
     public function ValidURL($URL): bool {
@@ -24,7 +19,7 @@ class provWebController {
         }
     }
 
-    public function HandleRequest($requestMethod, $key = null) {
+    public function HandleRequest($requestMethod, $key = null): void {
         $this->currentController->ProcessRequest($requestMethod, $key);
     }
 }

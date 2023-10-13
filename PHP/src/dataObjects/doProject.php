@@ -1,10 +1,6 @@
-<?php
-namespace Src\dataObjects;
+<?php declare(strict_types=1);
 
-use Src\base\doBase;
-use Src\base\doProperty;
-
-class doProject extends doBase {
+final class doProject extends doBase {
     public function __construct() {
         parent::__construct();
         $this->properties["Name"] = new doProperty("NAME", "Name", '', \PDO::PARAM_STR);

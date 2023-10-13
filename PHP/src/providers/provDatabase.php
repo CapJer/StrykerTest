@@ -1,5 +1,4 @@
 <?php declare(strict_types=1);
-
 class provDatabase
 {
     private ?\PDO $dbConnection = null;

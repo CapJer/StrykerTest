@@ -10,3 +10,4 @@
 /PHP/.idea
 /PHP/vendor
 PHP/.env
+PHP/.phpunit.result.cache

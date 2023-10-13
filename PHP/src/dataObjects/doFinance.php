@@ -1,10 +1,6 @@
-<?php
-namespace Src\dataObjects;
+<?php declare(strict_types=1);
 
-use Src\base\doBase;
-use Src\base\doProperty;
-
-class doFinance extends doBase {
+final class doFinance extends doBase {
     public function __construct() {
         parent::__construct();
         $this->properties["Amount"] = new doProperty("AMOUNT", "Amount", -1, \PDO::PARAM_STR);

@@ -1,12 +1,10 @@
-<?php
-namespace Src\base;
+<?php declare(strict_types=1);
+include_once(__DIR__ . "/tblBase.php");
 
 class ctlBase {
-    protected $db;
-    protected $table;
+    protected tblBase $table;
 
-    public function __construct($db) {
-        $this->db = $db;
+    public function __construct() {
     }
 
     public function ProcessRequest($requestMethod, $Key) {

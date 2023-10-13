@@ -1,15 +1,11 @@
-<?php
-namespace Src\controllers;
-
-use Src\base\ctlBase;
-use Src\tables\tblProjects;
+<?php declare(strict_types=1);
 
 class ctlProjects extends ctlBase {
 
-    public function __construct($db) {
-        parent::__construct($db);
+    public function __construct() {
+        parent::__construct();
 
-        $this->table = new tblProjects($db);
+        $this->table = new tblProjects();
     }
 
     protected function Validation($input): bool {

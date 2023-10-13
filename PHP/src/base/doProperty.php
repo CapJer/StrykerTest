@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 final class doProperty {
-    public $dbNamespace;
-    public $apiNamespace;
+    public string $dbNamespace;
+    public string $apiNamespace;
     private $defaultValue;
     private $valType;
     private $value = null;

@@ -1,10 +1,6 @@
-<?php
-namespace Src\dataObjects;
+<?php declare(strict_types=1);
 
-use Src\base\doBase;
-use Src\base\doProperty;
-
-class doTask extends doBase {
+final class doTask extends doBase {
     public function __construct() {
         parent::__construct();
         $this->properties["ProjectKey"] = new doProperty("FK_PROJECT", "ProjectKey", -1, \PDO::PARAM_INT);

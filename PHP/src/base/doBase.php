@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
-require __DIR__ . "/doProperty.php";
-use http\QueryString;
+require_once(__DIR__ . "/doProperty.php");
 
-final class doBase {
+class doBase {
     protected array $properties = Array();
 
     public function __construct() {
@@ -22,7 +21,7 @@ final class doBase {
         }
     }
 
-    public function ConvertToDBData($input) {
+    public function ConvertToDBData($input): void {
         foreach ($this->properties as $val) {
             if($input[$val->apiNamespace] != null) {
                 $val->SetValue(urldecode($input[$val->apiNamespace]));
@@ -30,13 +29,13 @@ final class doBase {
         }
     }
 
-    public function FillFromDB(array $dbData) {
+    public function FillFromDB(array $dbData): void {
         foreach($this->properties as $val){
             $val->SetValue($dbData[$val->dbNamespace]);
         }
     }
 
-    public function AsJSONObject() {
+    public function AsJSONObject(): array {
         $arr = Array();
         foreach ($this->properties as $val) {
             $arr[$val->apiNamespace] = $val->GetValue();

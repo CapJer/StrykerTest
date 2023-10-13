@@ -1,15 +1,17 @@
 <?php declare(strict_types=1);
+include_once(__DIR__ . "/../providers/provDatabase.php");
 
 class tblBase
 {
-    private $className;
-    protected $db;
-    protected $object;
-    public $dbError;
+    private string $className;
+    protected ?\PDO $db;
+    protected doBase $object;
+    public string|bool $dbError;
 
-    public function __construct($db, $className){
+    public function __construct($className){
         $this->className = $className;
-        $this->db = $db;
+        $dbProv = new provDatabase();
+        $this->db = $dbProv->getConnection();
     }
 
     public function GetAll() {
@@ -68,7 +70,7 @@ class tblBase
             $this->object->GetPropertiesArray($statement);
             $res = $statement->execute();
             if(!$res) {
-                $this->dbError = print_r($statement->errorInfo());
+                $this->dbError = print_r($statement->errorInfo(), true);
             }
             return $res;
         } catch (\PDOException $e) {
@@ -83,7 +85,7 @@ class tblBase
             $this->object->GetPropertiesArray($statement, true);
             $res = $statement->execute();
             if(!$res) {
-                $this->dbError = print_r($statement->errorInfo());
+                $this->dbError = print_r($statement->errorInfo(), true);
             }
             return $res;
         } catch (\PDOException $e) {
