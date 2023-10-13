@@ -22,7 +22,7 @@ class tblProjects extends tblBase {
     }
 
     public function Update(Array $input, $sql = null) {
-        $sql = "UPDATE Projects SET MODIFICATION_DT = :MODIFICATION_DT, NAME = :NAME, DESCRIPTION = :DESCRIPTION WHERE OBJECT_KEY = :OBJECT_KEY;";
+        $sql = "UPDATE Projects SET MODIFICATION_DT = CURRENT_TIMESTAMP, NAME = :NAME, DESCRIPTION = :DESCRIPTION WHERE OBJECT_KEY = :OBJECT_KEY;";
         return parent::Update($input, $sql);
     }
 }

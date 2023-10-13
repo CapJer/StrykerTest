@@ -90,18 +90,7 @@ class ctlBase {
     }
 
     private function Update(): array {
-        $raw_data = trim(file_get_contents('php://input'));
-        $parts = array_slice(explode("&", $raw_data), 1);
-        $firstKey = substr($raw_data, 0, strpos($raw_data, "="));
-        $firstVal = substr($raw_data, strpos($raw_data, "=") + 1, strpos($raw_data, "&") - strpos($raw_data, "=") - 1);
-        $data = Array();
-        $data[$firstKey] = $firstVal;
-        foreach ($parts as $part) {
-            $arr = array_slice(explode("=", $part), 1);
-            $val = urldecode($arr[0]);
-            $key = str_replace("=".$arr[0], "", $part);
-            $data[$key] = $val;
-        }
+        $data = $this->PUT_Data();
         if (! $this->Validation($data)) {
             return $this->Unprocessable();
         }
@@ -126,6 +115,27 @@ class ctlBase {
         }
         $response['body'] = null;
         return $response;
+    }
+
+    private function PUT_Data(): array {
+        $lines = file('php://input');
+        $keyLinePrefix = 'Content-Disposition: form-data; name="';
+
+        $PUT = [];
+
+        $mySubject = null;
+
+        foreach($lines as $num => $line) {
+            if (str_contains($line, $keyLinePrefix)) {
+                $mySubject = substr($line, 38, -3);
+            } else if (!is_null($mySubject) && strlen(trim($line)) > 0) {
+                $PUT[$mySubject] = trim($line);
+                $mySubject = null;
+            }
+        }
+
+        return $PUT;
+
     }
 
     protected function Validation($input): bool {

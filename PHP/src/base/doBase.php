@@ -13,7 +13,7 @@ class doBase {
 
     public function GetPropertiesArray(\PDOStatement $statement, bool $isUpdating = false): void {
         foreach ($this->properties as $val) {
-            if ($val->dbNamespace != "CREATION_DT" && $val->dbNamespace != "REC_STATE" && $isUpdating) {
+            if ($val->dbNamespace != "CREATION_DT" && $val->dbNamespace != "MODIFICATION_DT" && $val->dbNamespace != "REC_STATE" && $isUpdating) {
                 $statement->bindValue(':' . $val->dbNamespace, $val->GetValue(), $val->GetType());
             } else if (!$isUpdating) {
                 $statement->bindValue(':' . $val->dbNamespace, $val->GetValue(), $val->GetType());

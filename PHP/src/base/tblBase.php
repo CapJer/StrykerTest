@@ -64,7 +64,7 @@ class tblBase
         }
     }
 
-    public function Create(Array $input, string $sql) {
+    public function Create(Array $input, string $sql = null) {
         $this->object->ConvertToDBData($input);
         try {
             $statement = $this->db->prepare($sql);
@@ -79,7 +79,7 @@ class tblBase
         }
     }
 
-    public function Update(Array $input, string $sql) {
+    public function Update(Array $input, string $sql = null) {
         $this->object->ConvertToDBData($input);
         try {
             $statement = $this->db->prepare($sql);
