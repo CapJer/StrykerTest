@@ -7,3 +7,5 @@
 /.stryker-tmp
 /node_modules
 .idea/workspace.xml
+/PHP/.idea
+/PHP/vendor
