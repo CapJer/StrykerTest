@@ -1,13 +1,15 @@
 <?php
 require("../bootstrap.php");
 
-$dbConnection = (new provDatabase())->getConnection();
-
+http_response_code(401);
+exit();
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
 
-$webController = new provWebController($dbConnection);
+http_response_code(401);
+exit();
 
+$webController = new provWebController();
 
 if (!$webController->ValidURL($uri[1])) {
     http_response_code(404);
